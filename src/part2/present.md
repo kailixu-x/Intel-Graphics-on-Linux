@@ -6,7 +6,7 @@ Intel decided to re-enter the discrete GPU market in 2018 with the new Xe brand.
 
 The Xe GPU development didn't go well as planned, despite the integrated Xe-LP in the Intel Core CPUs at that time, the desktop discrete GPU was delayed for more than one year. The initial Iris Xe MAX discrete card (internally named "DG1") was released in 2021 with only Intel's own and a few OEM cards in small numbers, the performance was merely slightly better or almost the same as the integrated GPU of the Tiger Lake CPU. In 2022, the retail launch of the first generation "Alchemist" Intel discrete GPU under Arc brand (internally named "DG2") came after more than one year's delay. Together with this release, the first four generation code names were announced: Alchemist, Battlemage, Celestial, Druid. The server segment GPU "Ponte Vecchio" was also in delay at the same time.
 
-According to [Intel's press release](https://www.intel.com/content/www/us/en/newsroom/news/intel-launches-arc-b-series-graphics-cards.html), Intel released the second generation of desktop discrete GPU - Intel® Arc™ B-Series graphics cards (code-named "Battlemage"). The Arc B580 will be released on December 13, 2024 with a starting price of $249, equipping 12G GDDR6 VRAM; while the Arc B570 will be released on January 15 with a starting price at $219, equipping 10G GDDR6 VRAM. Compared with Nvidia RTX 4060, Arc B580 is expected to achieve better performance with lower price.
+According to [Intel's press release](https://www.intel.com/content/www/us/en/newsroom/news/intel-launches-arc-b-series-graphics-cards.html), Intel releases the second generation of desktop discrete GPU - Intel® Arc™ B-Series graphics cards (code-named "Battlemage"). The Arc B580 is released on December 13, 2024 with a starting price of $249, equipping 12G GDDR6 VRAM; while the Arc B570 is released on January 15 with a starting price at $219, equipping 10G GDDR6 VRAM. Compared with Nvidia RTX 4060, Arc B580 is expected to achieve better performance with lower price.
 
 The Xe-HPC line "Ponte Vecchio" was a failure and announced to be in sunsetting process in May 2024, just about one year later of its 2023 release, and the successor Falcon Shores is in internal development. For now, the only two lines that continue releasing are as follows: 1. The integrated GPU Xe-LP line, or as the later name Xe-LPG, in Meteor Lake and Lunar Lake CPUs; 2. The discrete GPU Xe-HPG line.
 
@@ -26,7 +26,7 @@ The Intel® Xe GPU family consists of a series of microarchitectures, ranging fr
 
 ### Xe2
 
-At Q3 of 2024 Intel Lunar Lake processor is shipping with the integrated GPU of Xe2 architecture. It's the second generation of Xe architecture and maybe a preview of the Battlemage discrete GPU.
+At Q3 of 2024 Intel Lunar Lake processor is shipping with the integrated GPU of Xe2 architecture. It's the second generation of Xe architecture, and the second generation discrete GPU codenamed Battlemage Arc B580/B570 use the Xe2 architecture too at end of 2024.
 
 ## Future
 

@@ -85,7 +85,7 @@ Please note the numbers of Xe-Cores in Xe-Slice, Xe-Slices in Xe-Stack are not f
 
 ### Xe2-LPG
 
-Xe2-LPG architecture has many improvements in different aspects of the GPU, in the Xe Vector Engine the ALU upgrades from SIMD8 to SIMD16, XMX is added for iGPU like Xe-HPG, FP64 unit is added with Extended Math unit. See [Xe2-LPG (Lunar Lake)](#Xe2-LPG-(Lunar-Lake)) for other updates.
+Xe2-LPG architecture has many improvements in different aspects of the GPU, in the Xe Vector Engine the ALU upgrades from SIMD8 to SIMD16, XMX is added for iGPU like Xe-HPG, FP64 unit is added with Extended Math unit. See [Xe2-LPG (Lunar Lake)](#xe2-lpg-lunar-lake) for other updates.
 
 ![Xe2 XVE Update](../pics/xe2-core-simd16.png)
 
@@ -105,30 +105,37 @@ In pre-Xe Gen generations, it used to be L1/L2 Cache in the internal units and L
 
 The below numbers are from Xe-HPG A770.
 
-| Cache/memory                | Number               | Size | Total Size |
-| --------------------------- | -------------------- | ---- | ---------- |
-| URB (Unified Return Buffer) | 8 (per Render Slice) | 480K | 480K x 8   |
-| Instruction Cache           | 32 (per Xe-Core)     | 96K  | 96K x 32   |
-| L1 Cache                    | 32 (per Xe-Core)     | 192K | 192K x 32  |
-| SLM (Shared Local Memory)   | 32 (per Xe-Core)     | 128K | 128K x 32  |
-| Device Cache                | 1                    | 16MB | 16MB       |
+| Cache/memory                         | Number               | Size | Total Size |
+| ------------------------------------ | -------------------- | ---- | ---------- |
+| URB (Unified Return Buffer)          | 8 (per Render Slice) | 480K | 480K x 8   |
+| Instruction Cache                    | 32 (per Xe-Core)     | 96K  | 96K x 32   |
+| L1 Cache & SLM (Shared Local Memory) | 32 (per Xe-Core)     | 192K | 192K x 32  |
+| L2 Cache                             | 1                    | 16MB | 16MB       |
 
 ## Generation Details
 
 ### Xe Generation Characteristics Comparison
 
-| **Architecture**             | Xe-LP (Tiger Lake)  | Xe-HPG (Arc A770)   | Xe-LPG (Meteor Lake) | Xe2 (Lunar Lake)     |
-| ---------------------------- | ------------------- | ------------------- | -------------------- | -------------------- |
-| Render Slice count           | 1                   | 8                   | 2                    | 2                    |
-| Xe-Core per Render Slice     | 6                   | 4                   | 4                    | 4                    |
-| Xe-Core (DSS/SS) count       | 6                   | 32                  | 8                    | 8                    |
-| Xe Vector Engine per Xe-Core | 16                  | 16                  | 16                   | 8                    |
-| Xe Vector Engine count       | 96                  | 512                 | 128                  | 64                   |
-| Thread per Xe Vector Engine  | 7                   | 8                   | 8                    | 8                    |
-| Thread count                 | 672                 | 4096                | 1024                 | 512                  |
-| Xe Vector Engine Width       | 256-bit 8 FP32 SIMD | 256-bit 8 FP32 SIMD | 256-bit 8 FP32 SIMD  | 512-bit 16 FP32 SIMD |
-| Ray-tracing unit count       | NA                  | 32                  | 8                    | 8                    |
-| FLOPs per clock - FP32, MAD  | 1536                | 8192                | 2048                 | 2048                 |
+| **Architecture**             | Xe-LP (Tiger Lake)  | Xe-HPG (Arc A770)                  | Xe-LPG (Meteor Lake) | Xe2-LPG (Lunar Lake) | Xe2-HPG (Arc B580)               |
+| ---------------------------- | ------------------- | ---------------------------------- | -------------------- | -------------------- | -------------------------------- |
+| Render Slice count           | 1                   | 8                                  | 2                    | 2                    | 5                                |
+| Xe-Core per Render Slice     | 6                   | 4                                  | 4                    | 4                    | 4                                |
+| Xe-Core (DSS/SS) count       | 6                   | 32                                 | 8                    | 8                    | 20                               |
+| Xe Vector Engine per Xe-Core | 16                  | 16                                 | 16                   | 8                    | 8                                |
+| Xe Vector Engine count       | 96                  | 512                                | 128                  | 64                   | 160                              |
+| Thread per Xe Vector Engine  | 7                   | 8                                  | 8                    | 8                    | 8                                |
+| Thread count                 | 672                 | 4096                               | 1024                 | 512                  | 1280                             |
+| Xe Vector Engine width       | SIMD8: 256-bit FP32 | SIMD8: 256-bit FP32                | SIMD8: 256-bit FP32  | SIMD16: 512-bit FP32 | SIMD16: 512-bit FP32             |
+| Ray-tracing Unit count       | N/A                 | 32                                 | 8                    | 8                    | 20                               |
+| L1 cache/SLM                 |                     | 192 KB                             | 192 KB               | 192 KB               | 256 KB                           |
+| L2                           |                     | 16 MB                              | 4 MB                 | 8 MB                 | 18 MB                            |
+| VRAM Bandwidth               |                     | 256-bit GDDR6 17.5 GT/s = 560 GB/s |                      |                      | 192-bit GDDR6 19 GT/s = 456 GB/s |
+
+### Xe2-HPG (Arc B580)
+
+[B580/B570 Media Deck](https://download.intel.com/newsroom/2024/client-computing/Intel-Arc-B580-B570-Media-Deck.pdf)
+
+[Intel Battlemage Architecture](https://chipsandcheese.com/p/intels-battlemage-architecture)
 
 ### Xe2-LPG (Lunar Lake)
 
@@ -136,7 +143,7 @@ The below numbers are from Xe-HPG A770.
 
 [Lunar Lake’s iGPU: Debut of Intel’s Xe2 Architecture](https://chipsandcheese.com/p/lunar-lakes-igpu-debut-of-intels)
 
-### Xe-HPG (ARC A770)
+### Xe-HPG (Arc A770)
 
 [Intel Graphics for Linux - Programmer's Reference Manuals - Alchemist/Arctic Sound-M Platform](https://www.intel.com/content/www/us/en/docs/graphics-for-linux/developer-reference/1-0/alchemist-arctic-sound-m.html)
 
